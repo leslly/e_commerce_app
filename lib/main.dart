@@ -1,9 +1,13 @@
-import 'package:e_commerce_flower_app/screens/cartoon/popular_cartoon_details.dart';
-import 'package:e_commerce_flower_app/screens/home/main_food_page.dart';
+import 'package:e_commerce_flower_app/controllers/popular_product_controller.dart';
+import 'package:e_commerce_flower_app/screens/movies/recommended_movie_details.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:get/get.dart';
+import 'helper/dependencies.dart' as dep;
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // will make sure dependencies are loaded and load correctly
+  await dep.init();
   runApp(const MyApp());
 }
 
@@ -13,6 +17,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    Get.find<PopularProductController>().getPopularProductLIst();
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
@@ -20,7 +25,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       //home: const MainFoodPage()
-        home: const PopularMovieDetails(),
+        home: const RecommendedMovieDetails(),
     );
   }
 }

@@ -3,11 +3,8 @@ import 'package:e_commerce_flower_app/utils/app_icon.dart';
 import 'package:e_commerce_flower_app/utils/dimensions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../../utils/big_text.dart';
-import '../../utils/icon_and_text.dart';
 import '../../utils/scrollable_text_widget.dart';
-import '../../utils/small_text.dart';
 
 class PopularMovieDetails extends StatelessWidget {
   const PopularMovieDetails({Key? key}) : super(key: key);
@@ -46,7 +43,8 @@ class PopularMovieDetails extends StatelessWidget {
               AppIcon(icon: Icons.arrow_back_ios),
               AppIcon(icon: Icons.shopping_cart_outlined),
             ],
-          )),
+          ),
+          ),
           // details
           Positioned(
             left: 0,
@@ -70,12 +68,11 @@ class PopularMovieDetails extends StatelessWidget {
                   BigText(text: "Introduction"),
                   Expanded(
                       child: ScrollableWidget(
-                          text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.')),
+                          text: 'Duis et dolor malesuada, tincidunt turpis quis, euismod eros. Quisque hendrerit augue vitae eros luctus molestie. Curabitur sagittis, ante eu ornare gravida, urna enim fermentum tortor, ac venenatis eros ligula efficitur justo. Pellentesque ac enim quis nulla viverra finibus. Suspendisse auctor, dolor sit amet tempor interdum, tellus nibh congue metus, nec egestas tortor eros at mi. Duis semper finibus orci in congue. Vivamus iaculis luctus metus, non malesuada urna viverra quis. Aliquam sagittis ut ipsum quis tempus. Nullam tempus turpis non ante semper auctor. Proin eleifend tellus quis massa placerat, nec efficitur nibh feugiat. Sed non dolor massa. Aliquam massa lorem, ultricies vel tortor sed, interdum sollicitudin justo. Vivamus neque tortor, interdum vitae sapien non, fermentum varius dui. Nunc mauris elit, interdum vitae commodo non, varius sit amet orci. Curabitur vel suscipit arcu, vel porta orci. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec nec neque pellentesque, fringilla elit ac, fermentum justo. Vestibulum leo neque, lacinia vitae pulvinar eget, pretium sed felis. Nunc ac tempus enim. Vivamus suscipit ante in augue accumsan semper.')),
                 ],
               ),
           ),
           ),
-          // scrollable widget
         ],
       ),
       bottomNavigationBar: Container(

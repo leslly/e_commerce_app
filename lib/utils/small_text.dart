@@ -4,6 +4,7 @@ import 'dimensions.dart';
 // A reuseable text widget
 class SmallText extends StatelessWidget {
    SmallText({Key? key,
+     this.size = 0,
     this.color = const Color(0xFF332d2b),
     required this.text,
      this.height = 1.2,
@@ -11,6 +12,7 @@ class SmallText extends StatelessWidget {
 
   final Color? color;
   final String text;
+  double size;
   double height;
 
   @override
@@ -20,7 +22,7 @@ class SmallText extends StatelessWidget {
       style: TextStyle(
         height: height,
         color: color,
-        fontSize: Dimensions.font12,
+        fontSize: size == 0 ? Dimensions.font12 : size,
         fontWeight: FontWeight.w400,
       ),
     );

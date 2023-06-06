@@ -15,6 +15,7 @@ class ScrollableWidget extends StatefulWidget {
 class _ScrollableWidgetState extends State<ScrollableWidget> {
 
   late String firstHalf;
+  // The lat keyword is used to declare variables hat will be initialised later
   late String secondHalf;
 
   bool hiddenText = true;
@@ -27,6 +28,11 @@ class _ScrollableWidgetState extends State<ScrollableWidget> {
     if(widget.text.length > textHeight){
       firstHalf = widget.text.substring(0, textHeight.toInt());
       secondHalf = widget.text.substring(textHeight.toInt() + 1, widget.text.length);
+      /* The subString function basically tell the the firsthalf and
+      second half of the text where to stop.
+
+      Else, when the text is not that long, the second half is empty.
+      the text being expanded depends on the maxlines of the firsthalf*/
     }else {
       firstHalf = widget.text;
       secondHalf = "";
@@ -36,9 +42,9 @@ class _ScrollableWidgetState extends State<ScrollableWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: secondHalf.isEmpty ? SmallText(text: firstHalf) : Column(
+      child: secondHalf.isEmpty ? SmallText(text: firstHalf, size: Dimensions.font16,) : Column(
         children: [
-          SmallText(text: hiddenText ? ("$firstHalf...") : (firstHalf + secondHalf)),
+          SmallText(text: hiddenText ? ("$firstHalf...") : (firstHalf + secondHalf), size: Dimensions.font16, height: 1.8,),
           InkWell(
             onTap: () {
               setState(() {
