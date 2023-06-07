@@ -1,14 +1,13 @@
 import 'package:dots_indicator/dots_indicator.dart';
+import 'package:e_commerce_flower_app/controllers/popular_product_controller.dart';
 import 'package:e_commerce_flower_app/utils/big_text.dart';
 import 'package:e_commerce_flower_app/utils/icon_and_text.dart';
 import 'package:e_commerce_flower_app/utils/small_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../utils/app_column.dart';
 import '../../utils/dimensions.dart';
-
-//import '../utils/dimensions.dart';
-
 
 class FoodPageBody extends StatefulWidget {
   const FoodPageBody({Key? key}) : super(key: key);
@@ -47,16 +46,18 @@ class _FoodPageBodyState extends State<FoodPageBody> {
     return Column(
       children: [
         ///// PAGE VIEW
-        Container(
-          height: Dimensions.pageView,
-          child: PageView.builder(
-           // physics: BouncingScrollPhysics(),
-            controller: pageController,
-              itemCount: 5,
-              itemBuilder: (context, index) {
-            return _buildPageItem(index);
-          }),
-        ),
+       GetBuilder<PopularProductController>(builder: (popularProducts){
+         return  Container(
+           height: Dimensions.pageView,
+           child: PageView.builder(
+             // physics: BouncingScrollPhysics(),
+               controller: pageController,
+               itemCount: popularProducts.popularProductList.length,
+               itemBuilder: (context, index) {
+                 return _buildPageItem(index);
+               }),
+         );
+       }),
     // custom color dot
     // new DotsIndicator(
     // dotsCount: 5,
@@ -68,19 +69,21 @@ class _FoodPageBodyState extends State<FoodPageBody> {
     // ),
       // use specific color for each dot
         ///// DOTS
-    DotsIndicator(
-    dotsCount: 5,
-    position: _currentPageValue.toInt(),
-    decorator: DotsDecorator(
-    colors: [Colors.grey, Colors.grey, Colors.grey, Colors.grey, Colors.grey], // Inactive dot colors
-    activeColors: [ Colors.pink, Colors.purple, Colors.deepPurple, Colors.deepPurpleAccent, Colors.purpleAccent ], // Àctive dot colors
-      size: Size.square(9.0),
-      activeSize: Size(18.0, 9.0),
-      activeShape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
-    ),
-    ),
+    GetBuilder<PopularProductController>(builder: (popularProducts){
+      return DotsIndicator(
+        dotsCount: popularProducts.popularProductList.isEmpty
+            ? 1 : popularProducts.popularProductList.length,
+        position: _currentPageValue.toInt(),
+        decorator: DotsDecorator(
+          activeColor:  Colors.deepPurpleAccent,  // Àctive dot colors
+          size: const Size.square(9.0),
+          activeSize: const Size(18.0, 9.0),
+          activeShape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+        ),
+      );
+    }),
         // POPULAR TEXT
         SizedBox(height: Dimensions.height30),
         Container(

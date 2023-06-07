@@ -1,4 +1,6 @@
 import 'package:e_commerce_flower_app/controllers/popular_product_controller.dart';
+import 'package:e_commerce_flower_app/screens/home/food_page_body.dart';
+import 'package:e_commerce_flower_app/screens/home/main_food_page.dart';
 import 'package:e_commerce_flower_app/screens/movies/recommended_movie_details.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       //home: const MainFoodPage()
-        home: const RecommendedMovieDetails(),
+        home: const MainFoodPage(),
     );
   }
 }
